@@ -1,0 +1,15 @@
+{% block content %}
+<div class="profiles-container">
+    {% for profile in profiles %}
+        <div class="profile-card">
+            <h2 class="profile-provider-code">{{ profile.provider_code }}</h2>
+            <p class="profile-cif"><strong>CIF:</strong> {{ profile.cif }}</p>
+            <p class="profile-city"><strong>City:</strong> {{ profile.city }}</p>
+            <p class="profile-county"><strong>County:</strong> {{ profile.city.county }}</p>
+            <p class="profile-bank-acc"><strong>Bank Account:</strong> {{ profile.bank_acc }}</p>
+        </div>
+    {% empty %}
+        <p>No profiles available.</p>
+    {% endfor %}
+</div>
+{% endblock %}

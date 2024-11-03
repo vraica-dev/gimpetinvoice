@@ -25,12 +25,20 @@ class Provider(models.Model):
     bank_acc = models.CharField(max_length=25, blank=False, null=False)
     bank = models.CharField(max_length=55, blank=False, null=False)
     social_cap = models.FloatField(blank=False, null=False, default=200.0)
+    provider_code = models.CharField(max_length=10, blank=True, null=True)
     created_at = models.DateField(auto_now_add=True)
     modified_at = models.DateField(auto_now=True)
 
     class Meta:
         ordering = ['-created_at']
-        indexes = [models.Index(fields=['cif', 'user'])]
+        indexes = [models.Index(fields=['cif', 'user']), models.Index(fields=['provider_code'])]
 
     def __str__(self):
         return f'{self.name} - {self.cif}'
+    
+
+    def save(self, *args, **kwargs):
+        self.provider_code = f'{str(self.name[:3]).strip()}{str(self.reg_number[:2]).strip()}__GPI'
+        super(Provider, self).save(*args, **kwargs)
+    
+    

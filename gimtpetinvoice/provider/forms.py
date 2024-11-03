@@ -8,7 +8,7 @@ class ProviderForm(ModelForm):
 
     class Meta:
         model = Provider
-        exclude = ['created_at', 'modified_at']
+        exclude = ['created_at', 'modified_at', 'provider_code']
         widgets = {
             'user': forms.HiddenInput()
         }

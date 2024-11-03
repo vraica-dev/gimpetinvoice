@@ -3,6 +3,7 @@ from django.views import View
 from provider.forms import ProviderForm
 import copy
 
+
 class ProviderCreateView(View):
     form_class = ProviderForm
     templte_name = 'provider_template.html'
@@ -32,3 +33,4 @@ class ProviderProfileView(View):
         profiles = Provider.objects.filter(user=self.request.user).select_related('city')
         profile_list = [p for p in profiles]
         return render(request, self.templte_name, context={"profiles": profile_list})
+    

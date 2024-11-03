@@ -6,9 +6,11 @@ from invoicing.api.serializers import InvoiceSerializer
 from rest_framework.response import Response
 from provider.models import Provider
 from .helpers import InvoicePaginator
+from rest_framework.authentication import TokenAuthentication
 
 
 class InvoiceViewset(GenericViewSet, CreateModelMixin, ListModelMixin):
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     queryset = Invoice.objects.all()
     serializer_class = InvoiceSerializer

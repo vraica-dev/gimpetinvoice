@@ -38,7 +38,7 @@ ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 # Application definition
 
-BASE = [
+BASE_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,7 +51,11 @@ CUSTOM_APPS = [
     'invoicing'
 ]
 
-INSTALLED_APPS = BASE + CUSTOM_APPS
+PCKG_APPS = [
+    'rest_framework.authtoken'
+]
+
+INSTALLED_APPS = BASE_APPS + CUSTOM_APPS + PCKG_APPS
 
 
 MIDDLEWARE = [
@@ -141,3 +145,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CACHES = {
+    'default': {
+       'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+       'LOCATION': './caches'
+    }
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+    ]
+}

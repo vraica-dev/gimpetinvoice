@@ -8,7 +8,7 @@ from rest_framework.exceptions import ValidationError
 class InvoiceFragmentSerializer(ModelSerializer):
     class Meta:
         model = InvoiceFragment
-        fields = ['item_price', 'item_price_with_vat', 'vat']
+        fields = ['item_price', 'item_price_with_vat', 'vat', 'product_name']
     
 
 class InvoiceSerializer(Serializer):

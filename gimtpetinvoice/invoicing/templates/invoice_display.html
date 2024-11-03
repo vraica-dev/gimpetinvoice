@@ -1,0 +1,162 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice #{{ invoice.id }}</title>
+    <style>
+        /* General Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            background-color: #f4f4f9;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .invoice-container {
+            max-width: 1000px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .header, .invoice-summary, .invoice-items, .totals {
+            margin-bottom: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .provider-details, .invoice-details {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .invoice-summary {
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            background: #f9f9fc;
+        }
+
+        .invoice-summary h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .invoice-items table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .invoice-items th, .invoice-items td {
+            text-align: left;
+            padding: 18px 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .invoice-items th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .totals {
+            text-align: right;
+        }
+
+        .totals .total-amount, .totals .total-vat {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="provider-details">
+                <h1>Invoice</h1>
+                <p><strong>Provider:</strong> {{ invoice.provider.name }}</p>
+                <p><strong>Code:</strong> {{ invoice.provider.city }}</p>
+                <p><strong>Address:</strong> {{ invoice.provider.street }}</p>
+            </div>
+            <div class="invoice-details">
+                <p><strong>Invoice ID:</strong> {{ invoice.id }}</p>
+                <p><strong>Date:</strong> {{ invoice.created_date|date:"F j, Y" }}</p>
+            </div>
+        </div>
+
+        <!-- Invoice Summary -->
+        <div class="invoice-summary">
+            <h2>Invoice Summary</h2>
+            <p><strong>Total Amount:</strong> ${{ invoice.total_amount }}</p>
+            <p><strong>Total VAT:</strong> ${{ invoice.total_vat }}</p>
+        </div>
+
+        <!-- Itemized Billing -->
+        <div class="invoice-items">
+            <h2>Items</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Price with VAT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in invoice.items.all %}
+                    <tr>
+                        <td>{{ item.product_name }}</td>
+                        <td>${{ item.item_price }}</td>
+                        <td>${{ item.item_price_with_vat }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Totals Section -->
+        <div class="totals">
+            <p class="total-amount">Total Amount: ${{ invoice.total_amount }}</p>
+            <p class="total-vat">Total VAT: ${{ invoice.total_vat }}</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Thank you for your business!</p>
+            <p>For questions, contact us at support@example.com</p>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

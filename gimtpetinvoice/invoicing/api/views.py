@@ -8,6 +8,7 @@ from provider.models import Provider
 from .helpers import InvoicePaginator
 from rest_framework.authentication import TokenAuthentication
 from base.core_utils import InvoicingVersioning
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 class InvoiceViewset(GenericViewSet, CreateModelMixin, ListModelMixin):
@@ -17,6 +18,7 @@ class InvoiceViewset(GenericViewSet, CreateModelMixin, ListModelMixin):
     serializer_class = InvoiceSerializer
     pagination_class = InvoicePaginator
     versioning_class = InvoicingVersioning
+    filter_backends = [DjangoFilterBackend]
     
     def create(self, request, *args, **kwargs):
         serz = self.get_serializer_class()
@@ -32,8 +34,11 @@ class InvoiceViewset(GenericViewSet, CreateModelMixin, ListModelMixin):
         """
         serializer = self.get_serializer_class()
         user = self.request.user
+        qparam = request.query_params.get("provider_code")
 
         provider = Provider.objects.filter(user=user)
+        if qparam:
+            provider = provider.filter(provider_code=qparam)
         qset = self.get_queryset().filter(provider__in=provider).order_by('total_amount')
 
         paginator = InvoicePaginator()

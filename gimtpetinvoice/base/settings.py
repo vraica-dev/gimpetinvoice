@@ -52,7 +52,8 @@ CUSTOM_APPS = [
 ]
 
 PCKG_APPS = [
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'django_filters'
 ]
 
 INSTALLED_APPS = BASE_APPS + CUSTOM_APPS + PCKG_APPS
@@ -157,5 +158,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
     ],
-    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning'
+    'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.URLPathVersioning',
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
 }

@@ -10,6 +10,7 @@ class City(models.Model):
     class Meta:
         ordering = ['name']
         verbose_name = 'cities'
+        indexes = [models.Index(fields=['name'])]
 
     def __str__(self):
         return str(self.name)
@@ -34,7 +35,7 @@ class Provider(models.Model):
         indexes = [models.Index(fields=['cif', 'user']), models.Index(fields=['provider_code'])]
 
     def __str__(self):
-        return f'{self.name} - {self.cif}'
+        return str(self.provider_code)
     
 
     def save(self, *args, **kwargs):

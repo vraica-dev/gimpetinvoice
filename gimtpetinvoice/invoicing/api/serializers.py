@@ -14,7 +14,8 @@ class InvoiceFragmentSerializer(ModelSerializer):
 class InvoiceSerializer(Serializer):
     provider_code = serializers.CharField(source='provider')
     items = InvoiceFragmentSerializer(many=True)
-
+    total_amount = serializers.DecimalField(decimal_places=2, max_digits=10, read_only=True)
+    total_vat = serializers.DecimalField(decimal_places=2, max_digits=10, read_only=True)
 
     def create(self, validated_data):
         provider_code = validated_data.pop("provider")

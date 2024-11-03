@@ -47,6 +47,7 @@ BASE = [
     'django.contrib.staticfiles',
 ]
 CUSTOM_APPS = [
+    'provider',
     'invoicing'
 ]
 

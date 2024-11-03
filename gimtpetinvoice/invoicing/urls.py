@@ -8,6 +8,6 @@ router = DefaultRouter()
 router.register(r'invoices', InvoiceViewset, basename='invoice-viewset')
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('<version>/api/', include(router.urls)),
     path('show_invoice/<int:inv_id>', show_invoice, name='show-invoice')
 ]

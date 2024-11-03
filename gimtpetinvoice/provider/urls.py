@@ -8,6 +8,6 @@ urlpatterns = [
     path('api-token-auth/', views.obtain_auth_token),
     path('add/', ProviderCreateView.as_view()),
     path('profile/', ProviderProfileView.as_view()),
-    path('list-providers/', ListProviders.as_view())
+    path('<version>/list-providers/', ListProviders.as_view())
     
 ]

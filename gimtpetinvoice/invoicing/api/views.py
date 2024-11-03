@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from provider.models import Provider
 from .helpers import InvoicePaginator
 from rest_framework.authentication import TokenAuthentication
+from base.core_utils import InvoicingVersioning
 
 
 class InvoiceViewset(GenericViewSet, CreateModelMixin, ListModelMixin):
@@ -15,6 +16,7 @@ class InvoiceViewset(GenericViewSet, CreateModelMixin, ListModelMixin):
     queryset = Invoice.objects.all()
     serializer_class = InvoiceSerializer
     pagination_class = InvoicePaginator
+    versioning_class = InvoicingVersioning
     
     def create(self, request, *args, **kwargs):
         serz = self.get_serializer_class()

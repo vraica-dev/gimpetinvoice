@@ -10,6 +10,7 @@ services:
     stdin_open: true
     volumes:
       - static_volume:/code/gimtpetinvoice/staticfiles
+      - ./entrypoint.sh:/code/entrypoint.sh:ro
     ports:
       - 8000:8000
     depends_on:

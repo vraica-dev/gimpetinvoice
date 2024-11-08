@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e6103e8d-bc1a-4633-ab03-b9f699f487d5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/base/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/gimtpetinvoice/base/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/base/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/gimtpetinvoice/base/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/dev.env" beforeDir="false" afterPath="$PROJECT_DIR$/gimtpetinvoice/dev.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/invoicing/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/gimtpetinvoice/invoicing/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/invoicing/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/gimtpetinvoice/invoicing/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/invoicing/migrations/0002_auto_20241102_1615.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/invoicing/migrations/0003_customer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/invoicing/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gimtpetinvoice/invoicing/models.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2oJcbXvnZJ21begGehI0yObxymd" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "develop",
+    "last_opened_file_path": "D:/Projects/practice_proejct/gimpetinvoice"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e6103e8d-bc1a-4633-ab03-b9f699f487d5" name="Changes" comment="" />
+      <created>1730591190436</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1730591190436</updated>
+    </task>
+    <servers />
+  </component>
+</project>

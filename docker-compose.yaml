@@ -1,0 +1,29 @@
+version: '3'
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    working_dir: /code/gimtpetinvoice
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    restart: always
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=invoiceadmin
+      - POSTGRES_PASSWORD=invoicesafepass
+      - POSTGRES_DB=invoicedb
+    volumes:
+      - ./db_init:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+    tty: true
+    stdin_open: true

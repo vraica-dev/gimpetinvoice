@@ -29,8 +29,12 @@ class ProviderProfileView(View):
     
     def get(self, request):
         from .models import Provider
+        import logging
+        logger = logging.getLogger(__name__)
+
 
         profiles = Provider.objects.filter(user=self.request.user).select_related('city')
         profile_list = [p for p in profiles]
+        logger.error("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
         return render(request, self.templte_name, context={"profiles": profile_list})
     

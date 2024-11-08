@@ -4,12 +4,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn base.wsgi:application --bind 0.0.0.0:8000
     working_dir: /code/gimtpetinvoice
     tty: true
     stdin_open: true
     volumes:
-      - .:/code
+      - static_volume:/code/gimtpetinvoice/staticfiles
     ports:
       - 8000:8000
     depends_on:
@@ -24,6 +24,18 @@ services:
     volumes:
       - ./db_init:/docker-entrypoint-initdb.d
     ports:
-      - 5432:5432
+      - 55432:5432
     tty: true
     stdin_open: true
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/code/gimtpetinvoice/staticfiles
+    ports:
+      - 1337:80
+    depends_on:
+      - django
+
+volumes:
+  postgres_data:
+  static_volume:

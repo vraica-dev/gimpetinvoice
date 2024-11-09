@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e6103e8d-bc1a-4633-ab03-b9f699f487d5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/base/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/gimtpetinvoice/base/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/base/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/gimtpetinvoice/base/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/dev.env" beforeDir="false" afterPath="$PROJECT_DIR$/gimtpetinvoice/dev.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/invoicing/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/gimtpetinvoice/invoicing/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/invoicing/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/gimtpetinvoice/invoicing/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/invoicing/migrations/0002_auto_20241102_1615.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/invoicing/migrations/0003_customer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gimtpetinvoice/invoicing/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/gimtpetinvoice/invoicing/models.py" afterDir="false" />
+    <list default="true" id="e6103e8d-bc1a-4633-ab03-b9f699f487d5" name="Changes" comment="modified entrypoint.sh">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prod.env" beforeDir="false" afterPath="$PROJECT_DIR$/prod.env" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,9 +18,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2oJcbXvnZJ21begGehI0yObxymd" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,11 +28,29 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Docker.GimPet.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "develop",
-    "last_opened_file_path": "D:/Projects/practice_proejct/gimpetinvoice"
+    "last_opened_file_path": "D:/Projects/practice_proejct/gimpetinvoice/docker-compose.yaml"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="GimPet" type="docker-deploy" factoryName="docker-compose.yml" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="commandLineOptions" value="--build" />
+          <option name="services">
+            <list>
+              <option value="django" />
+            </list>
+          </option>
+          <option name="sourceFilePath" value="docker-compose.yaml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -51,6 +67,19 @@
       <option name="presentableId" value="Default" />
       <updated>1730591190436</updated>
     </task>
+    <task id="LOCAL-00001" summary="modified entrypoint.sh">
+      <option name="closed" value="true" />
+      <created>1731192100075</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731192100075</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="modified entrypoint.sh" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified entrypoint.sh" />
   </component>
 </project>

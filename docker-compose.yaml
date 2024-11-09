@@ -27,7 +27,8 @@ services:
       - POSTGRES_PASSWORD=invoicesafepass
       - POSTGRES_DB=invoicedb
     volumes:
-      - ./db_init/db_init:/docker-entrypoint-initdb.d
+      - ./db_init:/docker-entrypoint-initdb.d
+      - ./pgdata:/etc/data
     ports:
       - 55432:5432
     tty: true

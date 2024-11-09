@@ -166,3 +166,7 @@ static/
 
 # caching on win
 caches/
+
+.idea*
+.idea/*
+.idea/

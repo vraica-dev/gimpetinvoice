@@ -1,8 +1,13 @@
-from base.celery import app
+from celery import shared_task
+from provider.models import Provider
 import time
 
 
-@app.task()
+@shared_task()
 def app1_test():
-    print('I am app1_test task!')
-    time.sleep(2)
+    try:
+        Provider.objects.first().delete()
+    except:
+        return False
+    return True
+    

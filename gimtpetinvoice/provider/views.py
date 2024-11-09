@@ -35,6 +35,8 @@ class ProviderProfileView(View):
 
         profiles = Provider.objects.filter(user=self.request.user).select_related('city')
         profile_list = [p for p in profiles]
-        logger.error("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+        logger.error("test")
+        from invoicing.tasks import app1_test
+        app1_test.delay()
         return render(request, self.templte_name, context={"profiles": profile_list})
     

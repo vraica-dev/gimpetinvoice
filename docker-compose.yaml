@@ -1,5 +1,6 @@
 version: '3'
 services:
+
   django:
     build:
       context: .
@@ -18,6 +19,9 @@ services:
     depends_on:
       - db
     restart: always
+    environment:
+      - DJANGO_SETTINGS_MODULE=base.settings
+    
   db:
     image: postgres
     environment:
@@ -30,6 +34,7 @@ services:
       - 55432:5432
     tty: true
     stdin_open: true
+
   nginx:
     build: ./nginx
     volumes:
@@ -38,6 +43,7 @@ services:
       - 1337:80
     depends_on:
       - django
+
   redis:  
     image: redis
     command: redis-server /usr/local/etc/redis/redis.conf
@@ -45,16 +51,19 @@ services:
       - ./redis.conf:/usr/local/etc/redis/redis.conf
     ports:
       - 6379:6379
-  rabbitmq:
-    image: rabbitmq:management
-    container_name: rabbitmq
-    environment:
-      - RABBITMQ_DEFAULT_USER=admin 
-      - RABBITMQ_DEFAULT_PASS=admin
-    ports:
-      - "5672:5672"
-      - "15672:15672"
 
+  celery:
+    build:
+      context: .
+    working_dir: /code/gimtpetinvoice
+    env_file:
+      - dev.env
+    command: celery -A base worker --loglevel=info -Q default
+    volumes:
+      - .:/code
+    depends_on:
+      - redis
+    
 volumes:
   postgres_data:
   static_volume:

@@ -6,7 +6,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = environ.Env(
-    DEBUG=(bool, False)
+    DEBUG=(bool, False),
 )
 environ.Env.read_env()
 
@@ -39,7 +39,9 @@ PCKG_APPS = [
     'rest_framework.authtoken',
     'django_filters',
     'django_elasticsearch_dsl',
-    'corsheaders'
+    'corsheaders',
+    'django_celery_results',
+    'shell_plus'
 ]
 
 INSTALLED_APPS = BASE_APPS + CUSTOM_APPS + PCKG_APPS
@@ -206,8 +208,16 @@ LOGGING = {
 
 CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS")
 
+from kombu import Exchange, Queue
 CELERY_TASK_ROUTES = {
- 'invoicing.tasks.*': {'queue': 'invoicing_queue'},
- 'provider.tasks.*': {'queue': 'provider_queue'},
+ 'invoicing.tasks.*': {'queue': 'default'},
+ 'provider.tasks.*': {'queue': 'default'},
 }
-CELERY_BROKER_URL =  env("CELERY_BROKER_URL")
+
+CELERY_TASK_QUEUES = (
+    Queue('default', Exchange('default'), routing_key='default'),
+)
+
+CELERY_BROKER_URL = env("CELERY_BROKER_URL")
+CELERY_RESULT_BACKEND = env("CELERY_RESULT_BACKEND")
+DJANGO_CELERY_RESULTS_TASK_ID_MAX_LENGTH=191

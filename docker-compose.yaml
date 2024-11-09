@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile
     command: gunicorn base.wsgi:application --bind 0.0.0.0:8000
     working_dir: /code/gimtpetinvoice
+    env_file:
+      - dev.env
     tty: true
     stdin_open: true
     volumes:
@@ -23,7 +25,7 @@ services:
       - POSTGRES_PASSWORD=invoicesafepass
       - POSTGRES_DB=invoicedb
     volumes:
-      - ./db_init:/docker-entrypoint-initdb.d
+      - ./db_init/db_init:/docker-entrypoint-initdb.d
     ports:
       - 55432:5432
     tty: true
@@ -36,6 +38,22 @@ services:
       - 1337:80
     depends_on:
       - django
+  redis:  
+    image: redis
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - 6379:6379
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin 
+      - RABBITMQ_DEFAULT_PASS=admin
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 
 volumes:
   postgres_data:

@@ -1,12 +1,11 @@
 #!/bin/sh
-set -e
 
-echo "Running database migrations..."
-python manage.py makemigrations
-python manage.py migrate
+# Only run in production
+if [ "$DJANGO_ENV" = "prod" ]; then
+    echo "Running entrypoint for production..."
+    python manage.py migrate
+    python manage.py collectstatic --noinput
+fi
 
-echo "Collecting static files..."
-python manage.py collectstatic --noinput
-
-echo "Starting Django server..."
+# Start the application
 exec "$@"

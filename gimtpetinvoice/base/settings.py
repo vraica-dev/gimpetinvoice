@@ -1,3 +1,4 @@
+import os
 import environ
 from pathlib import Path
 
@@ -8,10 +9,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(
     DEBUG=(bool, False),
 )
-environ.Env.read_env()
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+DJANGO_ENV = env('DJANGO_ENV', default='dev')
+env_file_name = 'prod.env' if DJANGO_ENV == 'prod' else 'dev.env'
+environ.Env.read_env(os.path.join(BASE_DIR, '..',  env_file_name))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env("SECRET_KEY")

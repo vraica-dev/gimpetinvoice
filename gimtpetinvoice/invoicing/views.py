@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from .models import Invoice
 from django.core.cache import caches
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseBadRequest
 
 
